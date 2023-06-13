@@ -877,7 +877,19 @@ $(function () {
     /* 快进快退显示开始 */
     // 点击div.video_progress 快进
     $('.video_progress').on('click', function (e) {
-        $('.jtInfo').css('display','block');
+        let left = e.offsetX;
+        console.log(left);
+        if(left<31) {
+            left = 31
+        }else if(540>=left>=31) {
+            left = e.offsetX+3
+        }else if(left>540) {
+            left = 540  
+        }
+        $('.jtInfo').css({
+            'display' : 'block',
+            'left' : left
+        });
         e = e || window.event;
         let rect = this.getBoundingClientRect();
         let x = e.clientX - rect.left;
@@ -926,7 +938,19 @@ $(function () {
     // 利用第二种思路 鼠标点击div.video_bar必然要先移入 移入后有悬浮时间
     // 从悬浮时间div.time_yiru 获取点击的时间
     $('.video_bar').on('click', function (e) {
-        $('.jtInfo').css('display','block');
+        let x = e.offsetX;
+        console.log(x);
+        if(x<31) {
+            x = 31
+        }else if(540>=x>=31) {
+            x = e.offsetX+3
+        }else if(x>540) {
+            x = 540
+        }
+        $('.jtInfo').css({
+            'display' : 'block',
+            'left' : x
+        });
         let percent = e.offsetX/($('.video_progress').width());
         let duration = Number($('#yincangyu').val());
         let time = v.currentTime - duration*percent;
