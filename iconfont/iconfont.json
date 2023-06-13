@@ -1,0 +1,205 @@
+{
+  "id": "4098311",
+  "name": "jq实现视频播放进度条控件",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "34997200",
+      "name": "文件-上传",
+      "font_class": "wenjian-shangchuan",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "658047",
+      "name": "无线网络",
+      "font_class": "wuxianwangluo",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "1163633",
+      "name": "线路",
+      "font_class": "xianlu",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "3718746",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "2154820",
+      "name": "播放器-弹幕（关）_44",
+      "font_class": "bofangqi-danmuguan",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "2154821",
+      "name": "播放器-弹幕（开）_44",
+      "font_class": "bofangqi-danmukai",
+      "unicode": "e697",
+      "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "18867298",
+      "name": "复古眼镜",
+      "font_class": "fuguyanjing",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "26974786",
+      "name": "标清",
+      "font_class": "biaoqing",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "26974793",
+      "name": "超清",
+      "font_class": "chaoqing",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "30585041",
+      "name": "交换  反向",
+      "font_class": "a-jiaohuanfanxiang",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "28396690",
+      "name": "画中画",
+      "font_class": "huazhonghua1",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "1488905",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "6536730",
+      "name": "暂停",
+      "font_class": "zanting1",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "1287696",
+      "name": "打钩",
+      "font_class": "dagou",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "1287721",
+      "name": "叉叉",
+      "font_class": "chacha",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "1304897",
+      "name": "左箭头",
+      "font_class": "zuojiantou",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "3456457",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e70f",
+      "unicode_decimal": 59151
+    },
+    {
+      "icon_id": "5652552",
+      "name": "清晰度",
+      "font_class": "qingxidu",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "16398962",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e855",
+      "unicode_decimal": 59477
+    },
+    {
+      "icon_id": "24858743",
+      "name": "右 点击展开 三角形",
+      "font_class": "Rrl_s_048",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "2815702",
+      "name": "播放",
+      "font_class": "bofang1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "6635152",
+      "name": "下载",
+      "font_class": "xiazai-",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "7594025",
+      "name": "24gl-fullScreenEnter2",
+      "font_class": "24gl-fullScreenEnter2",
+      "unicode": "ea68",
+      "unicode_decimal": 60008
+    },
+    {
+      "icon_id": "34218714",
+      "name": "画中画",
+      "font_class": "huazhonghua",
+      "unicode": "e86d",
+      "unicode_decimal": 59501
+    },
+    {
+      "icon_id": "2154470",
+      "name": "44_点点点",
+      "font_class": "diandiandianshu",
+      "unicode": "e679",
+      "unicode_decimal": 59001
+    },
+    {
+      "icon_id": "6776437",
+      "name": "声音静音",
+      "font_class": "shengyinjingyin",
+      "unicode": "eca9",
+      "unicode_decimal": 60585
+    },
+    {
+      "icon_id": "11372700",
+      "name": "声音",
+      "font_class": "shengyin",
+      "unicode": "e8b8",
+      "unicode_decimal": 59576
+    },
+    {
+      "icon_id": "3186888",
+      "name": "奔跑",
+      "font_class": "benpao",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    }
+  ]
+}

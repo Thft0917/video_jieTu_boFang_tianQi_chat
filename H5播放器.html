@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h5在线播放器</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <!-- 引入获取图片blob链接的js -->
+    <script src="./js/fz_byMyself.js"></script>
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <!-- 视频线路选择 -->
+    <ul class="xianlu">
+        <li id="xianlu">
+            <span class="iconfont icon-xianlu fl" id="xianlu"></span>
+            <span class="fr">线路</span>
+        </li>
+        <li id="bendi" class="yincang">
+            <label class="iconfont icon-shipin">
+                <input type="file" id='file' hidden>
+                <span class="bendi fr">本地</span>
+            </label>
+        </li>
+        <li id="wangluo" class="yincang">
+            <span class="iconfont icon-wuxianwangluo fl"></span>
+            <span class="wangluo fr">网络</span>
+        </li>
+    </ul>
+    <!-- 画中画遮罩层 -->
+    <div class="zhezhaoceng">
+        <span class="iconfont icon-chacha" id="cha"></span>
+        <div class="fh">
+            <span class="fl">返回到标签页</span>
+            <span class="iconfont icon-fanhui fr"></span>
+        </div>
+        <span class="iconfont icon-Rrl_s_048" id="ysj"></span>
+    </div>
+    <!-- v有个绝对定位：没有父级元素相对于浏览器 拖拽 -->
+    <video id="videos" width="300" height="150" class="huazhonghua" hidden>
+        <source src="" type="video/mp4">
+        </source>
+        当前浏览器不支持视频格式 请点击下载视频
+        <a href="./video/huge.mp4">下载视频</a>
+    </video>
+    <div class="videos" style="width: 800px;height:595px">
+        <!-- 视频部分 -->
+        <!-- <canvas id="ctx" width="100%" height="450"></canvas> -->
+        <!-- 画布 -->
+        <canvas id="zhuti" width="800" height="450"></canvas>
+        <!-- <canvas id="huazhonghua"></canvas> -->
+        <!-- 视频控件部分 -->
+        <!-- 清晰度 -->
+        <ul id="qingxidu">
+            <li class="fugufeng">
+                <span class="iconfont icon-fuguyanjing marginTop marginLeft fl"></span>
+                <span class="marginTop fl sMarginLeft">复古</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li class="fanxiang">
+                <span class="iconfont icon-a-jiaohuanfanxiang marginTop marginLeft fl"></span>
+                <span class="marginTop fl sMarginLeft">反向</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li class="chaoqing">
+                <span class="iconfont icon-chaoqing marginTop marginLeft fl"></span>
+                <span class="marginTop fl sMarginLeft">超清</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li class="biaoqing">
+                <span class="iconfont icon-biaoqing marginTop marginLeft fl"></span>
+                <span class="marginTop fl sMarginLeft">标清</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+        </ul>
+        <!-- 速度选择 -->
+        <ul id="sudu">
+            <li id="zuojiantou">
+                <span class="iconfont icon-zuojiantou zuojiantou"></span>
+                <span class="marginLeft1">选项</span>
+            </li>
+            <li>
+                <span class="marginLeft1">0.25</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li>
+                <span class="marginLeft1">0.5</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li>
+                <span class="marginLeft1">0.75</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li>
+                <span class="marginLeft1">正常</span>
+                <span class="iconfont dagou_color icon-dagou"></span>
+            </li>
+            <li>
+                <span class="marginLeft1">1.25</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li>
+                <span class="marginLeft1">1.5</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li>
+                <span class="marginLeft1">1.75</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+            <li>
+                <span class="marginLeft1">2</span>
+                <span class="iconfont dagou_color"></span>
+            </li>
+        </ul>
+        <!-- 三个点 -->
+        <ul id="gengduo">
+            <li id="quanpin">
+                <span class="marginTop iconfont icon-24gl-fullScreenEnter2 quanpin fl marginLeft"></span>
+                <span class="marginTop fl sMarginLeft">全屏</span>
+            </li>
+            <li class="xiazai">
+                <span class="marginTop iconfont icon-xiazai- fl marginLeft"></span>
+                <a class="marginTop fl sMarginLeft aLink" href="#">下载</a>
+            </li>
+            <li class="bofangsudu">
+                <div class="marginTop  iconfont icon-bofang1 fl marginLeft"></div>
+                <span class="marginTop fl sMarginLeft">播放速度</span>
+            </li>
+            <li class="hzh">
+                <span class="marginTop iconfont icon-huazhonghua fl marginLeft"></span>
+                <span class="marginTop fl sMarginLeft shzh">画中画</span>
+            </li>
+            <li class="qingxidu">
+                <span class="marginTop iconfont icon-qingxidu fl marginLeft"></span>
+                <span class="marginTop fl sMarginLeft">清晰度</span>
+            </li>
+        </ul>
+        <!-- 视频控件主件 -->
+        <div class="video_box">
+            <div class="video_control">
+                <span class="iconfont icon-zanting video_state"></span>
+                <!-- <span class="iconfont icon-zanting1 video_state1"></span> -->
+                <span class="iconfont icon-diandiandianshu gengduo"></span>
+                <div class="video_progress_main">
+                    <div class="video_progress">
+                        <div class="video_bar"></div>
+                        <!-- draggable设置奔跑的人是可以拖拽的 -->
+                        <span class="iconfont icon-benpao video_spot" draggable="true"></span>
+                        <span class="chengyihao iconfont icon-chacha"></span>
+                        <span class="beishu">1</span>
+                    </div>
+                    <!-- 视频每秒图片 -->
+                    <canvas class="video_pic" id="ctx"></canvas>
+                    <!-- 鼠标移入显示的时间 -->
+                    <div class="time_yiru"></div>
+                    <span class="start_time start_span"></span>
+                    <input type="hidden" id="yincangyu">
+                    <span class="end_time end_span"></span>
+                </div>
+                <!-- 音量设置 -->
+                <div class="iconfont icon-shengyin video_volume">
+                    <div class="iconfont icon-yihangyige jingyin"></div>
+                    <div class="box">
+                        <div class="video_progress_volum">
+                            <div class="video_bar_volum"></div>
+                            <span class="video_spot_volum"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 两个按钮部分 -->
+        <!-- <butttn class="video_btns" data-sum="88">调到88秒位置</butttn>
+        <butttn class="video_btns" data-sum="210">调到210秒位置</butttn> -->
+        <!-- 弹幕部分 -->
+        <div class="danmu" style="width: 800px;height:70px;background-color:skyblue">
+            <span class="iconfont icon-bofangqi-danmukai" id="danmu"></span>
+            <input type="text" id="dandao" placeholder="发个友善的弹幕见证当下">
+            <button id="fashe">发射</button>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.7.0.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

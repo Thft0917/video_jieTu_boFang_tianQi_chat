@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>h5视频在线截图工具</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <!-- 引入base64图片转图片文件再转blob地址的js -->
+    <script src="./js/fz_byMyself.js"></script>
+    <script>
+        function drow() {
+            const canvas = document.getElementById('huabu');
+            if (!canvas.getContext) {
+                console.log('浏览器不支持');
+            }
+            let ctx = canvas.getContext('2d');
+            // 找到btn.miao btn.zhen input#file video.v
+            const miao = document.querySelector('.miao');
+            const zhen = document.querySelector('.zhen');
+            const file = document.querySelector('#file');
+            const v = document.querySelector('.v');
+            const xiazai = document.querySelector('.xiazai');
+
+            let url;
+            file.onchange = function () {
+                // console.log(this.files[0]);
+                url = URL.createObjectURL(this.files[0]);
+                console.log(url);
+                // url地址给到v
+                v.src = url;
+
+                // 未点击miao zhen 之前 每次更变选择视频文件都让btn可点击
+                miao.disabled = false;
+                zhen.disabled = false;
+                // 计时方便给图片命名
+                let miao_time = 0;
+                let zhen_time = 0;
+                miao.onclick = function () {
+                    v.play();
+                    this.disabled = true;
+                    if (this.disabled) {
+                        zhen.disabled = true;
+                    }
+                    // 选择截图方式 播放视频 将视频渲染到画布
+                    function x() {
+                        miao_time++;
+                        ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+                        // console.log(canvas.toDataURL());
+                        let base64Image = canvas.toDataURL();
+                        // file 文件
+                        // console.log(base64ImgtoFile(base64Image));
+                        // 调用getBase64URL方法转blob
+                        let blobUrl = getBase64URL(base64Image);
+                        // console.log(blobUrl);
+
+                        // 利用a标签下载
+                        // 设计下载图片名称
+                        xiazai.download = `第${miao_time}秒图片.png`;
+                        xiazai.href = blobUrl;
+                        // 视频没完一直自动下载
+                        if (!v.ended) {
+                            xiazai.click();
+                        }
+
+                        // 视频结束 清除定时器
+                        if (v.ended) {
+                            clearInterval(timeID3);
+                            let isWanCheng = confirm('截图完成!!!!');
+                            if(isWanCheng) {
+                                window.location.reload();
+                            }else {
+                                window.location.reload();
+                            }
+                        }
+                    }
+                    const timeID3 = setInterval(x, 1000)
+                }
+                zhen.onclick = function () {
+                    v.play();
+                    this.disabled = true;
+                    if (this.disabled) {
+                        miao.disabled = true;
+                    }
+                    // 选择截图方式 播放视频 将视频渲染到画布
+                    function x() {
+                        zhen_time++;
+                        ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+                        // console.log(canvas.toDataURL());
+                        let base64Image = canvas.toDataURL();
+                        // file 文件
+                        // console.log(base64ImgtoFile(base64Image));
+                        // 调用getBase64URL方法转blob
+                        let blobUrl = getBase64URL(base64Image);
+                        // console.log(blobUrl);
+
+                        // 利用a标签下载
+                        // 设计下载图片名称
+                        xiazai.download = `第${zhen_time}帧图片.png`;
+                        xiazai.href = blobUrl;
+                        // 视频没完一直自动下载
+                        if (!v.ended) {
+                            xiazai.click();
+                        }
+
+
+                        // 视频结束 清除定时器 弹框提示截图完成
+                        if (v.ended) {
+                            clearInterval(timeID3);
+                            let isWanCheng = confirm('截图完成!!!!');
+                            if(isWanCheng) {
+                                window.location.reload();
+                            }else {
+                                window.location.reload();
+                            }
+                        }
+                    }
+                    // 1/12毫秒为一帧
+                    const timeID3 = setInterval(x, 1 / 12)
+                }
+
+
+            }
+        }
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .xiazai {
+            display: none;
+        }
+
+        #huabu {
+            display: block;
+            margin: 100px auto;
+            border: solid 1px;
+        }
+
+        .shangchuan {
+            font-size: 30px;
+            color: skyblue;
+            font-family: '宋体';
+        }
+    </style>
+</head>
+
+<body onload='drow()'>
+    <a href="" class="xiazai"></a>
+    <button class="miao">按秒截图</button>
+    <button class="zhen">按帧截图</button>
+    <label for="file" class="iconfont icon-wenjian-shangchuan shangchuan">选择视频文件</label>
+    <input type="file" id="file" hidden>
+    <video src="" width="300" height="150" class="v" hidden></video>
+    <canvas id='huabu' width='600px' height='400px'>
+        <p>浏览器不支持画布canvas 请更新浏览器</p>
+        <a href='https://www.bear20.com/window/4211/472030921.html'>下载</a>
+    </canvas>
+</body>
+
+</html>

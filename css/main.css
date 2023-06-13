@@ -1,0 +1,449 @@
+body {
+    background-image: url('../data/images/ggk.webp');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.videos {
+    width: 800px;
+    margin: 0 auto;
+    /* background-color: skyblue; */
+    position: relative;
+    overflow: hidden;
+}
+
+.video_box {
+    height: 70px;
+    background-color: #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.video_control {
+    height: 50px;
+    background-color: pink;
+    position: relative;
+    border: solid;
+}
+
+.video_progress_main {
+    width: 650px;
+    height: 50px;
+    /* background-color: red; */
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/* 播放键定位 */
+.video_state {
+    position: absolute;
+    left: 19px;
+    top: 13px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* 音量键定位 */
+.video_volume {
+    position: absolute;
+    right: 19px;
+    top: 13px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/*video_progress_main定位*/
+.video_progress_main {
+    margin: 0 auto;
+}
+
+/* video_progress_main相对定位 */
+.video_progress_main {
+    position: relative;
+}
+
+/* currenttime和duration */
+.start_time {
+    position: absolute;
+    left: -13px;
+    bottom: 0px;
+}
+
+.end_time {
+    position: absolute;
+    right: -13px;
+    bottom: 0px;
+}
+
+/* video_progress绝对定位 */
+.video_progress {
+    width: 650px;
+    height: 5px;
+    background-color: #4a4a4a;
+    /* 子绝父绝 */
+    position: absolute;
+    left: 0px;
+    top: 22.5px;
+    cursor: pointer;
+}
+
+/* 奔跑的人 */
+.video_spot {
+    position: absolute;
+    /* 这个奔跑的人的left是变化的 */
+    left: 0px;
+    top: -16px;
+}
+
+/* 进度条 */
+.video_bar {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 5px;
+    /* 这里的进度条宽度是变化的 */
+    width: 0px;
+    background-color: yellow;
+}
+
+/* 视频每秒图片 */
+.video_pic {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    display: none;
+}
+
+.time_yiru {
+    display: none;
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    text-align: center;
+    line-height: 20px;
+}
+
+/* 音量设置 */
+.jingyin {
+    position: absolute;
+    left: -6px;
+    top: -7px;
+    display: none;
+    font-size: 40px;
+    color: gray;
+}
+
+.box {
+    width: 50px;
+    height: 60px;
+    /* background-color: red; */
+    background-color: rgba(32, 40, 64, 0.3);
+    position: absolute;
+    left: -14px;
+    top: -65px;
+    display: none;
+    border-radius: 10px;
+}
+
+.video_progress_volum {
+    /* display: none; */
+    width: 5px;
+    height: 50px;
+    /* background-color: yellowgreen; */
+    background-color: rgba(32, 33, 36, 0.3);
+    position: absolute;
+    left: 22px;
+    top: 10px;
+    border-radius: 3px;
+}
+
+.video_bar_volum {
+    width: 5px;
+    /* 高度是变化的 鼠标点击到哪里 e.offsetY就是高度的值 */
+    height: 50px;
+    /* background-color: skyblue; */
+    background-color: white;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    border-radius: 3px;
+}
+
+.video_spot_volum {
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background-color: yellow;
+    position: absolute;
+    left: -1.5px;
+    /* bottom根据音量的大小来调节 */
+    top: -8px;
+    display: none;
+}
+
+/* 三个点 */
+.gengduo {
+    position: absolute;
+    right: -7px;
+    top: 13px;
+    font-size: 25px;
+    color: gray;
+}
+
+/* 音量设置结束 */
+
+/* 三个点 更多设置的开始 */
+.gengduo {
+    cursor: pointer;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+#gengduo,
+#qingxidu {
+    display: none;
+    position: absolute;
+}
+
+#gengduo li,
+#qingxidu li {
+    width: 180px;
+    height: 45px;
+    background-color: skyblue;
+    background-color: white;
+}
+
+#gengduo li span,
+#qingxidu li span {
+    font-family: '宋体';
+    font-size: 15px;
+}
+
+.fl {
+    float: left;
+}
+
+.marginLeft {
+    margin-left: 15px;
+}
+
+.sMarginLeft {
+    margin-left: 12px;
+}
+
+.marginTop {
+    margin-top: 15px;
+}
+
+.aLink {
+    text-decoration: none;
+    font-size: '15px';
+    font-family: '宋体';
+}
+
+/* 播放速度开始 */
+ul#sudu {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 180px;
+    display: none;
+    position: absolute;
+}
+
+ul#sudu li {
+    width: 180px;
+    height: 45px;
+    background-color: red;
+    overflow: hidden;
+}
+
+ul#sudu li::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.dagou_color {
+    color: skyblue;
+}
+
+/* 播放速度结束 */
+
+/* 画中画部分开始 */
+#zhuti {
+    /* background-color: skyblue; */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.huazhonghua {
+    /* background-color: red; */
+    position: absolute;
+    /* display: none; */
+}
+
+.zhezhaoceng {
+    width: 300px;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    display: none;
+}
+
+#cha {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+#ysj {
+    position: absolute;
+    left: 140px;
+    bottom: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+.fh {
+    width: 130px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    position: absolute;
+    left: 80px;
+    top: 60px;
+}
+
+.fh span:nth-child(1) {
+    color: white;
+    font-size: 10px;
+    margin-left: 13px;
+    margin-top: 5px;
+}
+
+.fh span:nth-child(2) {
+    color: white;
+    font-size: 10px;
+    margin-right: 15px;
+    margin-top: 7px;
+}
+
+/* 画中画部分结束 */
+
+/* 清晰度部分开始 */
+#qingxidu li {
+    position: relative;
+}
+
+#qingxidu li span:nth-child(3) {
+    position: absolute;
+    left: 107px;
+    top: 16px;
+}
+
+/* 清晰度部分结束 */
+
+.chengyihao {
+    position: absolute;
+    left: 15px;
+    top: -13px;
+    font-size: 10px;
+    display: none;
+}
+
+.beishu {
+    position: absolute;
+    left: 35px;
+    top: -16px;
+    font-size: 10px;
+    display: none;
+}
+
+/* 三个点 更多设置的结束 */
+
+/* 弹幕开始部分 */
+.danmu {
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#danmu {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 50px;
+    color: gray;
+}
+
+#fashe {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 0px;
+    padding: 0;
+    width: 80px;
+    height: 50px;
+}
+
+#dandao {
+    position: absolute;
+    left: 65px;
+    height: 50px;
+    padding: 0;
+    border: 0;
+    outline: none;
+    width: 645px;
+    box-sizing: border-box;
+    padding-left: 32px;
+}
+
+/* 弹幕开始结束 */
+
+/* 线路部分开始 */
+.xianlu {
+    position: fixed;
+    left: 10px;
+    top: 8px;
+}
+
+.xianlu li {
+    width: 60px;
+    height: 30px;
+    background-color: skyblue;
+}
+
+.xianlu li span {
+    font-family: '宋体';
+    font-size: 15px;
+}
+
+label {
+    width: 60px;
+    height: 30px;
+}
+
+.bendi {
+    margin-top: 2px;
+}
+
+.yincang {
+    display: none;
+}
+
+/* 线路部分结束 */
