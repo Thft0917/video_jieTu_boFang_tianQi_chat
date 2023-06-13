@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script>
+        function drow() {
+            const canvas = document.getElementById('huabu');
+            if (!canvas.getContext) {
+                console.log('浏览器不支持');
+            }
+            let ctx = canvas.getContext('2d');
+            let img = new Image();
+            img.src = '../zaiXianJIeTu_zaiXianBoFang/data/images/ggk.webp';
+            img.onload = function() {
+                ctx.drawImage(img,0,0,50,50)
+            }
+            ctx.font = '25px 宋体';
+            ctx.fillStyle = 'skyblue';
+            ctx.fillText('你清高,你真了不起',50,100);
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #huabu {
+            display: block;
+            margin: 100px auto;
+            border: solid 1px;
+        }
+    </style>
+</head>
+
+<body onload='drow()'>
+    <canvas id='huabu' width='600px' height='400px'>
+        <p>浏览器不支持画布canvas 请更新浏览器</p>
+        <a href='https://www.bear20.com/window/4211/472030921.html'>下载</a>
+    </canvas>
+</body>
+
+</html>
