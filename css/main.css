@@ -30,7 +30,7 @@ body {
 .video_progress_main {
     width: 650px;
     height: 50px;
-    /* background-color: red; */
+    background-color: red;
 }
 
 .fl {
@@ -447,3 +447,16 @@ label {
 }
 
 /* 线路部分结束 */
+
+/* 快进快退秒显示开始 */
+.jtInfo {
+    display: none;
+    position: absolute;
+    left: 287px;
+    top: 30px;
+    background-color: skyblue;
+    font-size: 15px;
+    color: black;
+    font-family: '宋体';
+}
+/* 快进快退秒显示结束 */

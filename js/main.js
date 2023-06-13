@@ -873,4 +873,104 @@ $(function () {
         $('.video_state').trigger('click')
     })
     /* 线路选择部分结束 */
+
+    /* 快进快退显示开始 */
+    // 点击div.video_progress 快进
+    $('.video_progress').on('click', function (e) {
+        $('.jtInfo').css('display','block');
+        e = e || window.event;
+        let rect = this.getBoundingClientRect();
+        let x = e.clientX - rect.left;
+        let percent = x / ($(this).width());
+        const duration = Number($('#yincangyu').val());
+        // let time = transTime(duration*percent);
+        // console.log(time);
+        let time = duration * percent;
+        let currentTime = v.currentTime;
+        // console.log(currentTime);
+        let jinTime = time - currentTime;
+        // console.log(parseInt('003'));
+        let jinTime_format = transTime(jinTime);
+        // console.log(jinTime_format);
+        let timeArr = jinTime_format.split(':');
+        let h, m, s, resTime;
+        switch (timeArr.length) {
+            case 3: {
+                h = parseInt(timeArr[0]);
+                m = parseInt(timeArr[1]);
+                s = parseInt(timeArr[2]);
+                resTime = `${h}h${m}m${s}s`;
+                break;
+            };
+            case 2: {
+                m = parseInt(timeArr[0]);
+                s = parseInt(timeArr[1]);
+                if (m == 0) {
+                    resTime = `${s}s`;
+                } else {
+                    resTime = `${m}m${s}s`;
+                }
+            }
+        }
+        //    console.log(resTime);
+
+        $('.jt').text(`快进${resTime}`);
+        $('.kjt').removeClass('icon-zuojiantou1').addClass('icon-youjiantou');
+        // return false;
+        let timeID = setTimeout(function() {
+            $('.jtInfo').css('display','none');
+            clearTimeout(timeID);
+        },1100);
+    })
+    // 鼠标点击div.video_bar 快退
+    // 利用第二种思路 鼠标点击div.video_bar必然要先移入 移入后有悬浮时间
+    // 从悬浮时间div.time_yiru 获取点击的时间
+    $('.video_bar').on('click', function (e) {
+        $('.jtInfo').css('display','block');
+        let percent = e.offsetX/($('.video_progress').width());
+        let duration = Number($('#yincangyu').val());
+        let time = v.currentTime - duration*percent;
+        // console.log(time);
+        let  tuiTime_format =  transTime(time);
+        console.log(tuiTime_format);
+        let timeArr = tuiTime_format.split(':');
+        let h, m, s, resTime;
+        switch (timeArr.length) {
+            case 3: {
+                h = parseInt(timeArr[0]);
+                m = parseInt(timeArr[1]);
+                s = parseInt(timeArr[2]);
+                resTime = `${h}h${m}m${s}s`;
+                break;
+            };
+            case 2: {
+                m = parseInt(timeArr[0]);
+                s = parseInt(timeArr[1]);
+                if (m == 0) {
+                    resTime = `${s}s`;
+                } else {
+                    resTime = `${m}m${s}s`;
+                }
+            }
+        }
+        //    console.log(resTime);
+
+        $('.jt').text(`快退${resTime}`);
+        $(this).css({
+            'width': e.offsetX
+        })
+        v.currentTime = duration*percent;
+
+        // span.kjt 添加左箭头类 去除.icon-youjiantou
+        $('.kjt').removeClass('icon-youjiantou').addClass('icon-zuojiantou1');
+        let timeID = setTimeout(function() {
+            $('.jtInfo').css('display','none');
+            clearTimeout(timeID);
+        },1100);
+
+        // 阻止点击video_bar时 触发父元素video_progress的点击事件
+        return false;
+    })
+
+    /* 快进快退显示结束 */
 })
