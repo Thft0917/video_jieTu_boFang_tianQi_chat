@@ -847,8 +847,12 @@ $(function () {
     $('#file').on('change', function () {
         // console.dir(this);
         let file = this.files[0];
+        console.log(this.files);
         let url = URL.createObjectURL(file);
         // console.log(url);
+        // 把地址存到本地
+        localStorage.setItem('videoUrl',url);
+        // console.log(localStorage.getItem('videoUrl') == url);
         //获得的blob视频地址给到video
         $('#videos').attr('src', url);
         /*   if(v.paused) {
@@ -879,16 +883,16 @@ $(function () {
     $('.video_progress').on('click', function (e) {
         let left = e.offsetX;
         console.log(left);
-        if(left<31) {
+        if (left < 31) {
             left = 31
-        }else if(540>=left>=31) {
-            left = e.offsetX+3
-        }else if(left>540) {
-            left = 540  
+        } else if (540 >= left >= 31) {
+            left = e.offsetX + 3
+        } else if (left > 540) {
+            left = 540
         }
         $('.jtInfo').css({
-            'display' : 'block',
-            'left' : left
+            'display': 'block',
+            'left': left
         });
         e = e || window.event;
         let rect = this.getBoundingClientRect();
@@ -929,10 +933,10 @@ $(function () {
         $('.jt').text(`快进${resTime}`);
         $('.kjt').removeClass('icon-zuojiantou1').addClass('icon-youjiantou');
         // return false;
-        let timeID = setTimeout(function() {
-            $('.jtInfo').css('display','none');
+        let timeID = setTimeout(function () {
+            $('.jtInfo').css('display', 'none');
             clearTimeout(timeID);
-        },1100);
+        }, 1100);
     })
     // 鼠标点击div.video_bar 快退
     // 利用第二种思路 鼠标点击div.video_bar必然要先移入 移入后有悬浮时间
@@ -940,22 +944,22 @@ $(function () {
     $('.video_bar').on('click', function (e) {
         let x = e.offsetX;
         console.log(x);
-        if(x<31) {
+        if (x < 31) {
             x = 31
-        }else if(540>=x>=31) {
-            x = e.offsetX+3
-        }else if(x>540) {
+        } else if (540 >= x >= 31) {
+            x = e.offsetX + 3
+        } else if (x > 540) {
             x = 540
         }
         $('.jtInfo').css({
-            'display' : 'block',
-            'left' : x
+            'display': 'block',
+            'left': x
         });
-        let percent = e.offsetX/($('.video_progress').width());
+        let percent = e.offsetX / ($('.video_progress').width());
         let duration = Number($('#yincangyu').val());
-        let time = v.currentTime - duration*percent;
+        let time = v.currentTime - duration * percent;
         // console.log(time);
-        let  tuiTime_format =  transTime(time);
+        let tuiTime_format = transTime(time);
         console.log(tuiTime_format);
         let timeArr = tuiTime_format.split(':');
         let h, m, s, resTime;
@@ -983,18 +987,53 @@ $(function () {
         $(this).css({
             'width': e.offsetX
         })
-        v.currentTime = duration*percent;
+        v.currentTime = duration * percent;
 
         // span.kjt 添加左箭头类 去除.icon-youjiantou
         $('.kjt').removeClass('icon-youjiantou').addClass('icon-zuojiantou1');
-        let timeID = setTimeout(function() {
-            $('.jtInfo').css('display','none');
+        let timeID = setTimeout(function () {
+            $('.jtInfo').css('display', 'none');
             clearTimeout(timeID);
-        },1100);
+        }, 1100);
 
         // 阻止点击video_bar时 触发父元素video_progress的点击事件
         return false;
     })
 
     /* 快进快退显示结束 */
+
+    /* 记录视频播放位置页面打开或刷新时从记录位置播放开始 */
+    //fn执行函数 delay停止触发事件多长时间后执行函数 minTime不断触发时强制执行时间
+    var throttle = function (fn, delay, minTime) {
+        if (typeof fn !== 'function') return new Function()
+        var timer = null;
+        var starTime = null;
+        return function () {
+            var now = +new Date();
+            !starTime && (starTime = now);
+            if (minTime && now - starTime > minTime) {
+                fn();
+                starTime = now;//将开始时间重置
+            } else {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    fn();
+                    starTime = null;
+                }, delay);
+            }
+        }
+    };
+    v.ontimeupdate = throttle(() => {
+        console.log(v.currentTime);
+        localStorage.setItem('currentTime',v.currentTime)
+    }, 1000,1000);
+    
+    // 页面一打开或刷新就触发 先拿到videoUrl 再拿到currentTime 把拿到视频播放时间设置到currentTime
+    v.onloadeddata = function() {
+        this.currentTime = localStorage.getItem('currentTime') || 0;
+        console.log(111);
+    }
+
+    /* 记录视频播放位置页面打开或刷新时从记录位置播放结束 */
 })
+
