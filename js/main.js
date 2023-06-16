@@ -43,7 +43,7 @@ $(function () {
                 // 创建img
                 let img = new Image();
                 // console.log(imgData[shubiao_yiru-1]);
-                img.src = `../data/images/huge` + imgData[shubiao_yiru];
+                img.src = `./data/images/huge` + imgData[shubiao_yiru];
                 img.onload = function () {
                     ctx.drawImage(img, 0, 0, canvas_video_pic.width, canvas_video_pic.height)
                 }
