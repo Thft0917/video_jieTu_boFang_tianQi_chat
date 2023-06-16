@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.contain {
+    width: 600px;
+    height: 450px;
+    margin: 100px auto;
+}
+#huabu {
+    border: solid 1px;
+}
+.box {
+    width: 600px;
+    height: 70px;
+    padding: 10px;
+    background-color: skyblue;
+    box-sizing: border-box;
+}
+.kongZhi {
+    width: 580px;
+    height: 50px;
+    background-color: red;
+    /* 清除包含塌陷 */
+    /* overflow: hidden; */
+    position: relative;
+}
+.progress_main {
+    width: 540px;
+    height: 3px;
+    background-color: rgba(0,0,0,0.2);
+    /* margin-top: 10px; */
+    position: absolute;
+    left: 40px;
+    top: 17px;
+   /*  box-sizing: border-box;
+    padding-left: 40px; */
+    cursor: pointer;
+}
+.progress {
+    height: 3px;
+    /* width: 20px; */
+    background-color: yellow;
+    position: absolute;
+    left: 0px;
+}
+.spot {
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    /* left: 20px; */
+    top: -1px;
+    border-radius: 7px;
+    background-color: blue;
+    display: none;
+}
+.vdieo_state {
+    position: absolute;
+    left: 9px;
+    top: 10px;
+    font-size: 26px;
+    color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+.start_time {
+    position: absolute;
+    left: 39px;
+    top: 26px;
+}
+.zongShiChang {
+    position: absolute;
+    right: 0px;
+    top: 26px;
+}

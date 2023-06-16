@@ -206,42 +206,74 @@ function launchFullscreen(element) {
     }
 }
 
-function danmu({neiRong,danmuTop,rightStart,width,height,fontSize,rightEnd,time,fangShi,fuDiv}) {
-    /*   {
-          neiRong : txt; //弹幕内容
-          danmuTop : $('div.fu').height()-$('<i></i>').height() ; //弹幕随机出现在父盒子的高度
-          rightStart : -$('<i></i>').width(); //弹幕从右边出发的位置
-          width : $('<i></i>').width() ; //弹幕的宽度
-          height : $('<i></i>').height(); //弹幕的高度
-          fontSize : //字体大小
-          rightEnd : $('div.fu').width() //弹幕结束的位置
-          time : //弹幕运动时间
-          fangShi : //弹幕运动方式
-          fuDiv:  //相对定位的  父元素
-      } */
-    // 去除空格
-    txt = $.trim(txt);
-    // 动态生成弹幕颜色
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    let rgb = `rgb(${r},${g},${b})`;
-
-    // 动态生成i的绝对定位top
-    let top = Math.ceil(Math.random() * 400);
-    // 动态创建i标签
-    $('<i></i>').text(txt).css({
-        'position': 'absolute',
-        'right': '-200px',
-        'top': top,
-        'width': '200px',
-        'height': '30px',
-        'fontSize': '20px',
-        'color': rgb,
-        'fontFamily': '宋体'
-    }).animate({ 'right': 800 }, 20000
-        , 'linear', function () {
-            $(this).remove();
-        }).appendTo('.videos')
+ // 时间格式化
+ function formatTime(value) {
+    var time = "";
+    var s = value.split(':');
+    var i = 0;
+    for (; i < s.length - 1; i++) {
+        time += s[i].length == 1 ? ("0" + s[i]) : s[i];
+        time += ":";
+    }
+    time += s[i].length == 1 ? ("0" + s[i]) : s[i];
+    return time;
+}
+// 时间转换
+function transTime(value) {
+    var time = "";
+    var h = parseInt(value / 3600);
+    value %= 3600;
+    var m = parseInt(value / 60);
+    var s = parseInt(value % 60);
+    if (h > 0) {
+        time = formatTime(h + ":" + m + ":" + s);
+    } else {
+        time = formatTime(m + ":" + s);
+    }
+    return time;
+}
+// 时间逆向转化为秒
+function niXiangTime(value) {
+    let time = '';
+    let timeArr = value.split(':');
+    // timeArr可能有2种情况：s,f,m ;f,m 
+    let num = timeArr.length;
+    switch (num) {
+        case 2: {
+            // 只有分 秒
+            time = parseInt(timeArr[0]) * 60 + parseInt(timeArr[1]);
+            break;
+        };
+        case 3: {
+            // 有时 分 秒
+            time = parseInt(timeArr[0]) * 3600 + parseInt(timeArr[1]) * 60 + parseInt(timeArr[2]);
+            break
+        }
+        default: {
+            time = '时间格式不对';
+        }
+    }
+    return time;
 }
 
+// 事件节流方法 可以和video.ontimeupdate 结合使用
+//fn执行函数 delay停止触发事件多长时间后执行函数 minTime不断触发时强制执行时间
+var throttle = function (fn, delay, minTime) {
+    if (typeof fn !== 'function') return new Function()
+    var timer = null;
+    var starTime = null;
+    return function () {
+        var now = +new Date();
+        !starTime && (starTime = now);
+        if (minTime && now - starTime > minTime) {
+            fn();
+            starTime = now;//将开始时间重置
+        } else {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                fn();
+                starTime = null;
+            }, delay);
+        }
+    }
+};

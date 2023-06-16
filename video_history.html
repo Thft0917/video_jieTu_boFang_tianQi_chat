@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>video_history</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <script src="./js/fz_byMyself.js"></script>
+    <script src="./js/jquery-3.7.0.js"></script>
+    <script src="./js/video_history.js"></script>
+    <link rel="stylesheet" href="./css/vdieo_history.css">
+</head>
+<body>
+    <!-- video_视频播放记录保存 -->
+    <video src="./data/video/huge.mp4" hidden></video>
+    <div class="contain">
+        <canvas id='huabu' width='600px' height='400px'>
+            <p>浏览器不支持画布canvas 请更新浏览器</p>
+            <a href='https://www.bear20.com/window/4211/472030921.html'>下载</a>
+        </canvas>
+        <div class="box">
+            <div class="kongZhi">
+                <span class="iconfont icon-zanting vdieo_state"></span>
+                <div class="progress_main">
+                    <div class="progress"></div>
+                    <span class="spot"></span>
+                </div>
+                <span class="start_time"></span>
+                <span class="zongShiChang"></span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
