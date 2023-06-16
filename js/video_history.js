@@ -5,6 +5,9 @@ $(function () {
     }
     // 获得画笔 上下文对象
     let ctx = canvas.getContext('2d');
+    // 找到视频图片画布 画笔
+    let canvas_pic = document.querySelector('.pic');
+    let ctx_pic = canvas_pic.getContext('2d');
     // 找到视频
     const v = document.getElementsByTagName('video')[0];
 
@@ -32,7 +35,7 @@ $(function () {
                },1000); */
 
             // 视频第一次播放或重复开始播放得解决第一秒的问题
-            if (!localStorage.getItem('video_history_currentTime') || localStorage.getItem('video_history_currentTime')=='60') {
+            if (!localStorage.getItem('video_history_currentTime') || localStorage.getItem('video_history_currentTime') == '60') {
                 // 因为用了节流的方法 得解决第一秒的spot和progress显示问题
                 const timeID5 = setTimeout(function () {
                     const percent = 1 / Math.round(v.duration);
@@ -87,6 +90,7 @@ $(function () {
         }
     }, 50);
 
+    // 视频而言 页面刷新或打开触发
     v.onloadeddata = function () {
         // console.log(localStorage.getItem('video_history_currentTime'));
         let time = localStorage.getItem('video_history_currentTime') || 0;
@@ -97,6 +101,43 @@ $(function () {
         })
         $('.progress').css('width', left);
         v.currentTime = time;
+        // 拿到time时候的图片 渲染到画布canvas
+        let img = new Image();
+        img.src = `./data/images/huge_history/第${time}秒图片.png`;
+        img.onload = function() {
+            ctx.drawImage(img,0,0,canvas.width,canvas.height)
+        }
     }
+
+    /* 视频图片开始 */
+    $('.progress_main').on('mouseenter', function (e) {
+        e = e || window.event;
+        // 鼠标移入时距离this的左边的距离
+        let x = e.clientX - this.getBoundingClientRect().left;
+        $('.pic_timeYiRu').css({
+            'display': 'block',
+            'left': x,
+            'top': '-67px'
+        })
+        let percent = x / $(this).width();
+        let time_yiRu = v.duration * percent;
+        // console.log(time_yiRu);
+        $('.timeYiRu').text(transTime(time_yiRu)).css({
+            'textAlign': 'center',
+            'lineHeight': '25px'
+        });
+
+        // 视频图片 外连js中的相对路径是相对于引入的html的不是相对于这个js文件 难怪高半天没有来
+        let img = new Image();
+        // 错误路径
+        // img.src = `../data/images/huge_history/第${Math.round(time_yiRu)}秒图片.png`;
+        img.src = `./data/images/huge_history/第${Math.round(time_yiRu)}秒图片.png`;
+        img.onload = function () {
+            ctx_pic.drawImage(img, 0, 0, canvas_pic.width, canvas_pic.height);
+        }
+    }).on('mouseleave', function () {
+        $('.pic_timeYiRu').css('display', 'none')
+    })
+    /* 视频图片结束 */
 
 })

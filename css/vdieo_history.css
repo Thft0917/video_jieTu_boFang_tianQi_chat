@@ -43,6 +43,7 @@
     background-color: yellow;
     position: absolute;
     left: 0px;
+    cursor: pointer;
 }
 .spot {
     width: 7px;
@@ -72,3 +73,27 @@
     right: 0px;
     top: 26px;
 }
+
+/* 视频图片开始 */
+.pic_timeYiRu {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 80px;
+    display: none;
+}
+.pic {
+    width: 80px;
+    height: 50px;
+    background-color: orange;
+}
+.timeYiRu {
+    display: block;
+    width: 80px;
+    height: 25px;
+    background-color: yellow;
+}
+.fl {
+    float: left;
+}
+/* 视频图片结束 */
