@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>天知道</title>
+  <link rel="shortcut icon" href="./data/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="./iconfont/iconfont.css" />
+  <link rel="stylesheet" href="css/tianZhiDao.css" />
+  <script type="text/javascript" src="js/jquery-3.7.0.js"></script>
+  <style>
+    .tem .iconfont {
+      font-size: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="search_form">
+      <div class="logo"><img src="./data/images/logo.png" alt="logo" /></div>
+      <div class="form_group">
+        <input type="text" class="input_txt" placeholder="请输入查询的天气" />
+        <button class="input_sub ">搜 索</button>
+      </div>
+      <div class="hotkey">
+        <a href="javascript:;">北京市</a><a href="javascript:;">上海市</a><a href="javascript:;">广州市</a><a
+          href="javascript:;">深圳市</a><a href="javascript:;">余干县</a>
+      </div>
+    </div>
+    <!-- 气泡框 鼠标移入span.iconfont时显示 移出时隐藏 -->
+    <canvas></canvas>
+    <img src="./data/images/思考.gif" alt="" srcset="" id="siKao">
+    <ul class="weather_list">
+      <!-- <li>
+        <div class="info_type">
+          <span class="iconfont">&#xe932;</span>
+        </div>
+        <div class="info_temp">高 <b>32℃</b><br />低 32℃</div>
+        <div class="info_date"><b>深圳</b><span>5月19日</span></div>
+      </li>
+      <li>
+        <div class="info_type">
+          <span class="iconfont">&#xe932;</span>
+        </div>
+        <div class="info_temp">高 <b>32℃</b><br />低 32℃</div>
+        <div class="info_date"><b>深圳</b><span>5月19日</span></div>
+      </li> -->
+    </ul>
+
+  </div>
+
+  <script>
+
+    // <div class="tem">
+    //   <h2>模板</h2>
+    //   <!-- 小雨 -->
+    //   <span class="iconfont">&#xe932;</span>
+    //   <!-- 大雨 -->
+    //   <span class="iconfont">&#xe931;</span>
+    //   <!-- 晴 -->
+    //   <span class="iconfont">&#xe933;</span>
+    //   <!-- 雨夹雪 -->
+    //   <span class="iconfont">&#xe934;</span>
+    //   <!-- 阴天 -->
+    //   <span class="iconfont">&#xe92d;</span>
+    //   <!-- 风 -->
+    //   <span class="iconfont">&#xeb8c;</span>
+    //   <!-- 雪 -->
+    //   <span class="iconfont">&#xeb87;</span>
+    //   <!-- 多云 -->
+    //   <span class="iconfont">&#xeb79;</span>
+    //   <!-- 雷 -->
+    //   <span class="iconfont">&#xeb77;</span>
+    //   <!-- 冰雹 -->
+    //   <span class="iconfont">&#xeb76;</span>
+    //   <!-- 雾霾 -->
+    //   <span class="iconfont">&#xeb75;</span>
+    // </div>
+
+
+  </script>
+  <script src="./js/jquery-3.7.0.js"></script>
+  <script src="./js/template-web.js"></script>
+  <script id="tmp_weather" type="text/html">
+    {{each}}
+    <li>
+        <div class="info_type">
+          <!-- 小雨 -->
+          {{if $value.dayweather.indexOf("小雨") != -1}}
+          <span class="iconfont icon-weather-hail" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 雨 -->
+          {{else if $value.dayweather.indexOf("雨") != -1}}
+          <span class="iconfont icon-weather-pouring" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 晴 -->
+          {{else if $value.dayweather.indexOf("晴") != -1}}
+          <span class="iconfont icon-weather-sunny" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 雨夹雪 -->
+          {{else if $value.dayweather.indexOf("雨夹雪") != -1}}
+          <span class="iconfont icon-weather-snowy-rainy" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 阴 -->
+          {{else if $value.dayweather.indexOf("阴") != -1}}
+          <span class="iconfont icon-weatherwindyvariant" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 风 -->
+          {{else if $value.dayweather.indexOf("风") != -1}}
+          <span class="iconfont icon-weather-windy" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 雪 -->
+          {{else if $value.dayweather.indexOf("雪") != -1}}
+          <span class="iconfont icon-weathersnowy" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 多云 -->
+          {{else if $value.dayweather.indexOf("多云") != -1}}
+          <span class="iconfont icon-weatherpartlycloudy" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 雷 -->
+          {{else if $value.dayweather.indexOf("雷") != -1}}
+          <span class="iconfont icon-weather-lightning" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 冰雹 -->
+          {{else if $value.dayweather.indexOf("冰雹") != -1}}
+          <span class="iconfont icon-weather-hail" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          <!-- 雾霾 -->
+          {{else if $value.dayweather.indexOf("雾霾") != -1}}
+          <span class="iconfont icon-weatherfog" data-date="{{$value.date}}" data-weather="{{$value.dayweather}}"></span>
+          {{/if}}
+        </div>
+         <div class="info_temp">高 <b>{{$value.daytemp}}</b><br>低 {{$value.nighttemp}}<br><i class="xingQi">星期{{$value.week.toUpperCase()}}</i></div>
+        <div class="info_date"><b>{{$value.city}}</b><span>{{$value.date}}</span></div>
+    </li>
+    {{/each}}
+  </script>
+  <script src="./js/tianZhiDao.js"></script>
+</body>
+
+</html>

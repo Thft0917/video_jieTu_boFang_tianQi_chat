@@ -6,6 +6,83 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "705002",
+      "name": "weather-partlycloudy",
+      "font_class": "weatherpartlycloudy",
+      "unicode": "eb79",
+      "unicode_decimal": 60281
+    },
+    {
+      "icon_id": "705025",
+      "name": "weather-snowy",
+      "font_class": "weathersnowy",
+      "unicode": "eb87",
+      "unicode_decimal": 60295
+    },
+    {
+      "icon_id": "705031",
+      "name": "weather-windy-variant",
+      "font_class": "weatherwindyvariant",
+      "unicode": "eb8d",
+      "unicode_decimal": 60301
+    },
+    {
+      "icon_id": "1445591",
+      "name": "weather-hail",
+      "font_class": "weather-hail",
+      "unicode": "e92f",
+      "unicode_decimal": 59695
+    },
+    {
+      "icon_id": "1445592",
+      "name": "weather-lightning",
+      "font_class": "weather-lightning",
+      "unicode": "e930",
+      "unicode_decimal": 59696
+    },
+    {
+      "icon_id": "1445594",
+      "name": "weather-pouring",
+      "font_class": "weather-pouring",
+      "unicode": "e931",
+      "unicode_decimal": 59697
+    },
+    {
+      "icon_id": "1445596",
+      "name": "weather-sunny",
+      "font_class": "weather-sunny",
+      "unicode": "e932",
+      "unicode_decimal": 59698
+    },
+    {
+      "icon_id": "1445598",
+      "name": "weather-snowy-rainy",
+      "font_class": "weather-snowy-rainy",
+      "unicode": "e933",
+      "unicode_decimal": 59699
+    },
+    {
+      "icon_id": "1445602",
+      "name": "weather-windy",
+      "font_class": "weather-windy",
+      "unicode": "e934",
+      "unicode_decimal": 59700
+    },
+    {
+      "icon_id": "6571635",
+      "name": "Cloudy",
+      "font_class": "Cloudy",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "704995",
+      "name": "weather-fog",
+      "font_class": "weatherfog",
+      "unicode": "eb75",
+      "unicode_decimal": 60277
+    },
+    {
       "icon_id": "1638283",
       "name": "右箭头",
       "font_class": "youjiantou",

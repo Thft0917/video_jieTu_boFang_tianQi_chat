@@ -40,10 +40,15 @@ $(function () {
             // 移入的shubiao_yiru和i都在1-duration之间 如果相等取数组最后一个元素 跳出循环
             if (i == Math.floor(duration)) {
                 // console.log(shubiao_yiru);
+                // 这时能拿到完整的数组
                 // 创建img
                 let img = new Image();
                 // console.log(imgData[shubiao_yiru-1]);
+<<<<<<< HEAD
                 img.src = `./data/images/huge` + imgData[shubiao_yiru];
+=======
+                img.src = `./data/images/huge/` + imgData[shubiao_yiru];
+>>>>>>> 564c397 (完成天知道天气查询 带有高德免费的天气api和自己写的中文城市名转adcode接口（便于天气api参数city接收参数值adcode）)
                 img.onload = function () {
                     ctx.drawImage(img, 0, 0, canvas_video_pic.width, canvas_video_pic.height)
                 }

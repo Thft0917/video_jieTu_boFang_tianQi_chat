@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4098311 */
-  src: url('iconfont.woff2?t=1686645413591') format('woff2'),
-       url('iconfont.woff?t=1686645413591') format('woff'),
-       url('iconfont.ttf?t=1686645413591') format('truetype');
+  src: url('iconfont.woff2?t=1687264268314') format('woff2'),
+       url('iconfont.woff?t=1687264268314') format('woff'),
+       url('iconfont.ttf?t=1687264268314') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,50 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-weatherpartlycloudy:before {
+  content: "\eb79";
+}
+
+.icon-weathersnowy:before {
+  content: "\eb87";
+}
+
+.icon-weatherwindyvariant:before {
+  content: "\eb8d";
+}
+
+.icon-weather-hail:before {
+  content: "\e92f";
+}
+
+.icon-weather-lightning:before {
+  content: "\e930";
+}
+
+.icon-weather-pouring:before {
+  content: "\e931";
+}
+
+.icon-weather-sunny:before {
+  content: "\e932";
+}
+
+.icon-weather-snowy-rainy:before {
+  content: "\e933";
+}
+
+.icon-weather-windy:before {
+  content: "\e934";
+}
+
+.icon-Cloudy:before {
+  content: "\e65a";
+}
+
+.icon-weatherfog:before {
+  content: "\eb75";
 }
 
 .icon-youjiantou:before {
