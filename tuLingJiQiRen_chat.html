@@ -14,12 +14,13 @@
     <div id="container">
         <div class="header">
             <span class="fl">微信聊天</span>
+            <span class="chatPerson" v-text="chatPerson"></span>
             <span class="fr time">动态获取</span>
         </div>
         <ul class="content">
             <li v-for="(item, index) in message">
                 <!-- <label for="file"><img :src="item.isSelf?imgUrl:'./data/img/loading.gif'" :class="'img'+(item.isSelf?'right':'left')"><input type="file" id='file'  v-show="false" @change="gengHuan" v-cloak></label> -->
-                <img :src="item.isSelf?imgUrl:'./data/images/loading.gif'" :class="'img'+(item.isSelf?'right':'left')">
+                <img :src="item.isSelf?imgUrl:'./data/images/'+chatPerson+'.webp'" :class="'img'+(item.isSelf?'right':'left')">
                 <span :class="'span'+(item.isSelf?'right':'left')" v-cloak>{{item.message}}</span>
             </li>
         </ul>

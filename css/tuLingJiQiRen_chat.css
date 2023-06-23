@@ -130,6 +130,30 @@
     border-radius: 10px;
 }
 
+/* 选择聊天人物开始 */
+.chatPerson {
+    position: absolute;
+    left: 200px;
+}
+
+
+
+
+
+
+
+
+
+/* 选择聊天人物结束 */
+
+
+
+
+
+
+
+
+
 [v-cloak] {
     display: none;
 }
