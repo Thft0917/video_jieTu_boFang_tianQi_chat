@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 450px;
+    height: 780px;
+    background-color: #eee;
+    margin: 80px auto 0;
+    position: relative;
+    box-shadow: 20px 20px 55px #777;
+}
+
+.header {
+    height: 40px;
+    background-color: black;
+    padding: 0 10px;
+    color: white;
+    line-height: 34px;
+    font-size: 20px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.content {
+    font-size: 20px;
+    width: 435px;
+    height: 662px;
+    padding: 5px;
+    overflow: auto;
+}
+
+.footer {
+    width: 430px;
+    height: 50px;
+    padding: 10px;
+    background-color: #666;
+    position: absolute;
+    bottom: 0px;
+}
+
+#touXiang {
+    width: 60px;
+    height: 50px;
+    border-radius: 60px;
+    /* vertical-align: middle; */
+    position: absolute;
+    left: 10px;
+    top: 13px;
+    cursor: pointer;
+}
+
+#user_face_icon {
+    display: inline-block;
+}
+
+#txt {
+    width: 275px;
+    height: 45px;
+    font-size: 20px;
+    text-indent: 10px;
+    outline: none;
+    position: absolute;
+    left: 78px;
+    top: 13px;
+    border-radius: 5px;
+}
+
+#btn {
+    height: 45px;
+    width: 62px;
+    background-color: #ccc;
+    border: 0;
+    position: absolute;
+    right: 16px;
+    top: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.content li {
+    height: 70px;
+    box-sizing: border-box;
+    padding: 10px 5px;
+}
+
+.content li img {
+    width: 50px;
+    height: 50px;
+}
+
+.content li .imgright {
+    float: right;
+}
+
+.content li .spanright {
+    float: right;
+    margin: 6px 10px 0 10px;
+    max-width: 310px;
+    background-color: yellow;
+    border: solid 1px #ccc;
+    font-family: '宋体';
+    font-size: 15px;
+    padding: 10px;
+    box-shadow: 0 0 3px #ccc;
+    border-radius: 10px;
+}
+
+.content li .imgleft {
+    float: left;
+}
+
+.content li .spanleft {
+    float: left;
+    margin: 6px 10px 0 10px;
+    max-width: 310px;
+    background-color: white;
+    border: solid 1px #ccc;
+    font-family: '宋体';
+    font-size: 15px;
+    padding: 10px;
+    box-shadow: 0 0 3px #ccc;
+    border-radius: 10px;
+}
+
+[v-cloak] {
+    display: none;
+}

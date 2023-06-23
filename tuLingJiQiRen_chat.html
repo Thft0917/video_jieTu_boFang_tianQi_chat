@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图灵机器人陪你聊天</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/tuLingJiQiRen_chat.css">
+</head>
+
+<body>
+    <div id="container">
+        <div class="header">
+            <span class="fl">微信聊天</span>
+            <span class="fr time">动态获取</span>
+        </div>
+        <ul class="content">
+            <li v-for="(item, index) in message">
+                <!-- <label for="file"><img :src="item.isSelf?imgUrl:'./data/img/loading.gif'" :class="'img'+(item.isSelf?'right':'left')"><input type="file" id='file'  v-show="false" @change="gengHuan" v-cloak></label> -->
+                <img :src="item.isSelf?imgUrl:'./data/images/loading.gif'" :class="'img'+(item.isSelf?'right':'left')">
+                <span :class="'span'+(item.isSelf?'right':'left')" v-cloak>{{item.message}}</span>
+            </li>
+        </ul>
+        <div class="footer">
+            <div id="user_face_icon">
+                <!-- <img id='touXiang' :src="imgUrl?imgUrl:'./data/img/渲染01.webp'" alt=""> -->
+                <label for="file"><img :src="imgUrl" id="touXiang"><input type="file"
+                        id='file' v-show="false" @change="gengHuan" v-cloak></label>
+            </div>
+            <input type="text" id="txt" placeholder="说点什么吧....." @keyup.enter="chat" v-model.trim="inputValue">
+            <button id="btn">发送</button>
+        </div>
+    </div>
+    <script src="./js/vue2.0.js"></script>
+    <script src="./js/jquery-3.7.0.js"></script>
+    <script src="./js/tuLingJiQiRen_chat.js"></script>
+</body>
+
+</html>

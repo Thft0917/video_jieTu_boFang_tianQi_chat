@@ -147,7 +147,7 @@ $(function () {
       //发送ajax请求(jQuery提供的ajax方法)
       $.ajax({
         type: 'get',
-        url: 'http://pxm.thft.buzz/city/adcode',
+        url: 'https://pxm.thft.buzz/city/adcode',
         data: {
           chinaName: cityName
         },
