@@ -133,7 +133,7 @@ let app = new Vue({
                                     const timeID = setTimeout(function() {
                                         alert('今天的机器人权限都用完了,请重新创建或升级账号');
                                         clearTimeout(timeID)
-                                    },700)
+                                    },900)
                                 }
                                /*  if (chang == 2) {
                                     var num = +prompt(`已经不能和${this.meiQuXuan}聊天了,可以选择序号
@@ -197,7 +197,7 @@ let app = new Vue({
                             }
 
 
-                        }, 700)
+                        }, 900)
 
                     }
                 }
