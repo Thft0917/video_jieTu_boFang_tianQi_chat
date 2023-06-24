@@ -6,22 +6,31 @@ function x() {
     let h = time.getHours();
     let m = time.getMinutes();
     let s = time.getSeconds();
-    if (h < 10 && m > 10 && s > 10) {
+    // console.log(h,m,s);
+    if(h < 10 && m > 10 && s > 10) {
         timeStr = `0${h}:${m}:${s}`;
-    } else if (h > 10 && m < 10 && s > 10) {
+        console.log(timeStr);
+    }else if (h >= 10 && m < 10 && s >= 10) {
         timeStr = `${h}:0${m}:${s}`;
-    } else if (h > 10 && m > 10 && s < 10) {
+        console.log(timeStr);
+    }else if (h >=10 && m >= 10 && s < 10) {
         timeStr = `${h}:${m}:0${s}`;
-    } else if (h < 10 && m < 10 && s > 10) {
+        console.log(timeStr);
+    }else if (h < 10 && m < 10 && s >= 10) {
         timeStr = `0${h}:0${m}:${s}`;
-    } else if (h < 10 && m > 10 && s < 10) {
+        console.log(timeStr);
+    }else if (h < 10 && m >= 10 && s < 10) {
         timeStr = `0${h}:${m}:0${s}`;
-    } else if (h > 10 && m < 10 && s < 10) {
+        console.log(timeStr);
+    }else if (h >= 10 && m < 10 && s < 10) {
         timeStr = `${h}:0${m}:0${s}`;
-    } else if (h < 10 && m < 10 && s < 10) {
+        console.log(timeStr);
+    }else if (h < 10 && m < 10 && s < 10) {
         timeStr = `0${h}:0${m}:0${s}`;
-    } else if (h > 10 && m > 10 && s > 10) {
+        console.log(timeStr);
+    }else if (h >=10 && m >= 10 && s >= 10) {
         timeStr = `${h}:${m}:${s}`
+        console.log(timeStr);
     }
     $('.time').text(timeStr)
 }
@@ -32,7 +41,6 @@ x();
 setInterval(() => {
     x()
 }, 1000);
-
 
 
 // vue部分
