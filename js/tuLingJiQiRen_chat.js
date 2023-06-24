@@ -33,29 +33,40 @@ setInterval(() => {
     x()
 }, 1000);
 
+
+
 // vue部分
 let app = new Vue({
     el: '#container',
     data: {
+        // 我输入的内容
         inputValue: '',
+        // 机器人和我的聊天内容
+        /* 
+            {
+                message : 内容,
+                isSelf : 布尔值 //true表示我说的 false 机器人回的
+            }
+        */
         message: [],
+        // 默认头像
         imgUrl: './data/images/渲染01.webp',
         // 默认聊天人物：胡歌
         chatPerson: '胡歌',
-        // 是否要换个人聊
-        isTure: '',
+        // chatPerson_xuanZe是否隐藏 默认隐藏
+        isYinCang: false,
         // apiKey
         apiKey: '',
-        // 没被选中聊天的人
-        chatPerson_no: [],
         // 聊天人物头像
         icon: ['大幂幂.webp', '胡歌.webp', '张雪迎.webp'],
         // 今天没有权限聊天的机器人
         meiQuXuan: [],
         // 今天有权限聊天的机器人
         youQuanXian: [],
-        // 
-        jqr : ['胡歌','大幂幂','张雪迎']
+        // 机器人列表
+        jqrs : ['胡歌','大幂幂','张雪迎'],
+        // 字体图标类 打钩
+        daGou_no : 'iconfont frl'
     },
     methods: {
         chat() {
@@ -112,14 +123,14 @@ let app = new Vue({
                        const timeID2= setTimeout(() => {
                             // console.log(this);
                             let isTure = confirm('要不换个人聊聊')
-                            this.isTure = isTure;
+                            // this.isTure = isTure;
                             // 已经在this.meiQuXuan的数组中 再次调用ajax不用在将this.chatPerson添加
                             if (this.meiQuXuan.indexOf(this.chatPerson) == -1) {
                                 this.meiQuXuan.push(this.chatPerson);
                             }
-                            for(var i=0;i<this.jqr.length;i++) {
-                                if(this.meiQuXuan.indexOf(this.jqr[i])==-1) {
-                                    this.youQuanXian.push(this.jqr[i])
+                            for(var i=0;i<this.jqrs.length;i++) {
+                                if(this.meiQuXuan.indexOf(this.jqrs[i])==-1) {
+                                    this.youQuanXian.push(this.jqrs[i])
                                 }
                             }
 
@@ -127,8 +138,8 @@ let app = new Vue({
                             
                             // 确定换个人聊
                             if (isTure) {
-                                if(this.jqr.length!==this.meiQuXuan.length) {
-                                    var jqr = prompt(`你可以和${this.jqr} 聊天,但是${this.meiQuXuan}已经没有权限了,请输入你要聊天的人:`)
+                                if(this.jqrs.length!==this.meiQuXuan.length) {
+                                    var jqrs = prompt(`你可以和${this.jqrs} 聊天,但是${this.meiQuXuan}已经没有权限了,请输入你要聊天的人:`)
                                 }else {
                                     const timeID = setTimeout(function() {
                                         alert('今天的机器人权限都用完了,请重新创建或升级账号');
@@ -169,8 +180,8 @@ let app = new Vue({
                                 }else if(chang == 0) {
                                     alert('都没权限')
                                 } */
-                                if(this.jqr.indexOf(jqr)!==-1) {
-                                    this.chatPerson = jqr;
+                                if(this.jqrs.indexOf(jqrs)!==-1) {
+                                    this.chatPerson = jqrs;
                                 }
 
                                 // 换人聊天后 apiKey修改成对应的人
@@ -192,7 +203,7 @@ let app = new Vue({
                                 console.log(this);
 
                             }
-                            if(this.jqr.length==this.meiQuXuan.length) {
+                            if(this.jqrs.length==this.meiQuXuan.length) {
                                 clearTimeout(timeID2)
                             }
 
@@ -214,6 +225,26 @@ let app = new Vue({
             // console.log(fileBlob);
             this.imgUrl = fileBlob;
             console.log(this);
+        },
+        // 操纵ul.chatPerson_xuanZe的显示和隐藏
+        xianShi() {
+            $('.chatPerson_xuanZe').stop().slideDown()
+        },
+        yinCang() {
+            $('.chatPerson_xuanZe').stop().slideUp()
+        },
+        // 选中哪个机器人
+        xuanZhong_jqr(item,$event) {
+            // 点击的不是当前的聊天人 清空屏幕
+            if(this.chatPerson!==item) {
+                $('.content').empty()
+            }
+            // console.log(e.target);
+            // $(e.target).children()
+            // this.daGou_no = 'iconfont icon-dagou frl';
+            $($event.target).children().addClass('icon-dagou').parent().siblings().children('span').removeClass('icon-dagou');
+            // console.log(item);
+            this.chatPerson = item
         }
     },
     updated() {

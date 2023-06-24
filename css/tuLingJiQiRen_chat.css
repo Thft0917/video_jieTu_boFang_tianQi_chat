@@ -134,6 +134,28 @@
 .chatPerson {
     position: absolute;
     left: 200px;
+    width: 100px;
+    line-height: 34px;
+    height: 40px;
+}
+.chatPerson_xuanZe {
+    position: absolute;
+    left: -29px;
+    top: 40px;
+    /* background-color: skyblue; */
+    background-color: rgba(0,0,0,0.2);
+}
+.chatPerson_xuanZe li {
+    list-style: none;
+    width: 100px;
+    line-height: 34px;
+    height: 40px;
+    box-sizing: border-box;
+    padding-left: 5px;
+}
+.frl {
+    float: right;
+    margin-right: 9px;
 }
 
 

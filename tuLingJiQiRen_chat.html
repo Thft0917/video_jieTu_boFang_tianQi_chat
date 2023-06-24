@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>图灵机器人陪你聊天</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
     <link rel="stylesheet" href="./css/tuLingJiQiRen_chat.css">
 </head>
 
@@ -14,7 +15,11 @@
     <div id="container">
         <div class="header">
             <span class="fl">微信聊天</span>
-            <span class="chatPerson" v-text="chatPerson"></span>
+            <div class="chatPerson" v-cloak @mouseenter="xianShi" @mouseleave="yinCang">{{chatPerson}}
+                <ul class="chatPerson_xuanZe" v-show="isYinCang">   
+                    <li v-for="(item, index) in jqrs" v-cloak @click="xuanZhong_jqr(item,$event)">{{item}}<span :class="daGou_no+(item=='胡歌'?' icon-dagou':'')"></span></li>
+                </ul>
+            </div>
             <span class="fr time">动态获取</span>
         </div>
         <ul class="content">
