@@ -31,7 +31,7 @@ $(function () {
         city,
         type
       },
-      dataType: 'jsonp',
+      dataType: 'json',
       success: async backData => {
         if (backData.code !== 200) {
           $('.input_sub').removeClass('loading')
@@ -44,7 +44,7 @@ $(function () {
         await new Promise((resolve, reject) => {
           setTimeout(() => {
             resolve()
-          }, 2000);
+          }, 1100);
         })
         // console.log(backData.forecasts[0].city);
         // console.log(backData.forecasts[0].casts);
