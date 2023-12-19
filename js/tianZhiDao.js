@@ -26,7 +26,7 @@ $(function () {
     $('.input_sub').addClass('loading');
     $.ajax({
       type: 'get',
-      url: 'http://121.41.100.222:5555/getWeather',
+      url: 'https://pxmclub.buzz/getWeather',
       data: {
         city,
         type
