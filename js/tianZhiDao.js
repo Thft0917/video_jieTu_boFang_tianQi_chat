@@ -16,9 +16,9 @@ $(function () {
   ctx.quadraticCurveTo(150, 135, 140, 125);
   ctx.stroke();
 
-  var myScript = document.createElement('script');
-  myScript.src = 'https://cdn.bootcss.com/jquery/3.3.1/jquery.js';
-  document.getElementsByTagName('head')[0].appendChild(myScript);
+  // var myScript = document.createElement('script');
+  // myScript.src = 'https://cdn.bootcss.com/jquery/3.3.1/jquery.js';
+  // document.getElementsByTagName('head')[0].appendChild(myScript);
 
   // 封装方法x 请求天气数据
   function x({ city, type }) {
