@@ -27,7 +27,7 @@ $(function () {
         city,
         type
       },
-      dataType: 'json',
+      dataType: 'jsonp',
       success: async backData => {
         if (backData.code !== 200) {
           $('.input_sub').removeClass('loading')
